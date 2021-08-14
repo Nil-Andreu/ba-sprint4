@@ -1,6 +1,16 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
-  let result =  ???;
+  // Create a directors array
+  directors = []
+
+  // We map the array of movies
+  array.map(i => {
+
+    // We push each director to the array
+    directors.push(i.director)
+     
+  })
+  let result =  directors;
   console.log("EXERCICE 1 ->", result);
   return result;
 }
