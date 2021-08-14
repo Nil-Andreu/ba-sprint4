@@ -17,7 +17,10 @@ function getAllDirectors(array) {
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
- 
+  // We use the filter method, where for each element of the array (i), we check that its director is equal to the one we are searching
+  result = array.filter(i => i.director == director)
+  console.log("EXERCICE 2 ->", result);
+  return result
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
