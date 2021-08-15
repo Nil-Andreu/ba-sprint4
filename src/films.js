@@ -133,88 +133,53 @@ function moviesAverageByCategory(array, genre) {
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
-  /*let time = "2h 45min"
-  let [hours, minutes] = time.split(" ") // Going to divide the time for hours and minutes
-  let [number_hour, letter_hour] = hours.split("h") // Will obtain the number of hour that corresponds
-  let [number_minutes, letter_minutes] = minutes.split("m") // Will obtain the number of minutes that corresponds
+  // Create a new array which will have the old array
+  new_array = []
 
-  // The new time would be the string of hours and minutes passed to numbers
-  time = (Number(number_hour) * 60) + Number(number_minutes)*/
-
-  new_array = array;
   for (let i = 0; i < array.length; i++) {
-  /*Should check for the cases where there is only hours without minutes. And the other cases is when we have hour and minute and when only minutes
-  
-  */
+    // Create each element of the new array (new place in memory), where the duration will be set to 0 by default
+    new_array.push({title: array[i].title, year: array[i].year, director: array[i].director, duration: 0, genre: array[i].genre, score: array[i].score})
 
-    /* let hours_part = array[i].duration.split('h'); // Going to divide the time for hours and minutes
+    // We use the include method, which is for strings
+    if (array[i].duration.includes('h')) {
+      if (array[i].duration.includes('min')) {
+        // It is like 2h 45min
+        let [hours, minutes] = array[i].duration.split(' ');
+        let [number_hours, letter_hours] = hours.split('h');
+        let [number_minutes, letter_minutes] = minutes.split('m');
 
-    if (hours_part == undefined) {
-      // Would be like 45min
-      let [number_minutes, letter_minutes] = array[i].duration.split('m');
-      new_array[i].duration = Number(number_minutes);
-    } else {
-      // There is an hour, but we do not know if there is minutes
-      let [number_hours, letter_hour] = array[i].duration.split('h'); // Will obtain the number of hour that corresponds
-      let [number_minutes, letter_minutes] = array[i].duration.split('m'); // Will obtain the number of minutes that corresponds
-
-      // In the case that there are not minutes
-      if (number_minutes == undefined) {
-        new_array[i].duration = Number(hours_part) * 60;
-      } else {
-        // There are minutes
         new_array[i].duration =
           Number(number_hours) * 60 + Number(number_minutes);
+      } else {
+        // It is like 2 h
+        let [number_hours, letter_hours] = array[i].duration.split('h');
+        new_array[i].duration = Number(number_hours) * 60;
       }
-    }*/
+    } else {
+      // It is like 45min
+      let [number_minutes, letter_minutes] = array[i].duration.split('m');
+      new_array[i].duration = Number(number_minutes);
+    }
   }
-
-  /*// In the case that 
-    if (minutes_part == undefined || hours_part == undefined) {
-    } 
-    if (minutes_part == undefined) {
-      let [number_hours, letter_hour] = array[i].duration.split('h')
-      new_arrat[i].duration = Number(number_hours)* 60
-    }
-    if (hours_part == undefined) {
-      let [number_minutes, letter_minutes] = array[i].duration.split('m')
-      new_arrat[i].duration = Number(number_minutes)
-    }
-
-    else {
-      let [number_hour, letter_hour] = hours_part.split('h'); // Will obtain the number of hour that corresponds
-      let [number_minutes, letter_minutes] = minutes_part.split('m'); // Will obtain the number of minutes that corresponds
-
-      new_array[i].duration = Number(number_hour) * 60 + Number(number_minutes);
-    }
-  }*/
-
-  /*array.map(i => {
-    let [hours, minutes] = i.duration.split(" ") // Going to divide the time for hours and minutes
-    let [number_hour, letter_hour] = hours.split("h") // Will obtain the number of hour that corresponds
-    let [number_minutes, letter_minutes] = minutes.split("m") // Will obtain the number of minutes that corresponds
-    i.duration = Number((Number(number_hour) * 60) + Number(number_minutes))
-  })*/
   return new_array;
 }
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear(array, year) {
-  best_film = []
-  best_score = 0
+  best_film = [];
+  best_score = 0;
   for (let i = 0; i < array.length; i++) {
     //console.log(array[i].score)
-    film_year = array[i].year
-    film_score = array[i].score
-
+    film_year = array[i].year;
+    film_score = array[i].score;
 
     if (film_year == year) {
-      console.log("True")
+      console.log('True');
       // If this film score is the highest one
       if (film_score > best_score) {
-        console.log(array[i])
+        console.log(array[i]);
         // The best film will be this one as an array
-        best_film = [array[i]]; 
+        best_film = [array[i]];
 
         // The best score will now be the film score
         best_score = film_score;
