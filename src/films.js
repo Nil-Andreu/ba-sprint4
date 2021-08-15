@@ -204,15 +204,20 @@ function bestFilmOfYear(array, year) {
   best_score = 0
   for (let i = 0; i < array.length; i++) {
     //console.log(array[i].score)
-    console.log(array[i].year)
+    film_year = array[i].year
+    film_score = array[i].score
 
 
-    if (array[i].year == year) {
-      
-      if (array[i].score > best_score) {
-        best_firm = array[i];
-        console.log(best_film)
-        best_score = array[i].score
+    if (film_year == year) {
+      console.log("True")
+      // If this film score is the highest one
+      if (film_score > best_score) {
+        console.log(array[i])
+        // The best film will be this one as an array
+        best_film = [array[i]]; 
+
+        // The best score will now be the film score
+        best_score = film_score;
       }
     }
   }
