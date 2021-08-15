@@ -2002,6 +2002,8 @@ const movies = [
   }
 ];
 
+test = [{ score: 5, genre: ['Action'] }, { score: '', genre: ['Action'] }];
+
 /* export default films; */
 if (typeof module !== 'undefined') {
   module.exports = movies;
