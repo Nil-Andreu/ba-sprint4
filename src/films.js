@@ -1,5 +1,5 @@
 // Exercise 1: Get the array of all directors.
-function getAllDirectors(array) {
+let getAllDirectors = array => {
   /* How I will solve this is by creating a new array directors, and then pushing all the directors of the array parameter
   * using the map method 
   */
@@ -17,7 +17,7 @@ function getAllDirectors(array) {
 }
 
 // Exercise 2: Get the films of a certain director
-function getMoviesFromDirector(array, director) {
+let getMoviesFromDirector = (array, director) => {
   // We use the filter method, where for each element of the array (i), we check that its director is equal to the one we are searching
   results = array.filter((i) => i.director == director);
   return results;
@@ -46,7 +46,7 @@ function moviesAverageOfDirector(array, director) {
 }
 
 // Exercise 4:  Alphabetic order by title
-function orderAlphabetically(array) {
+let orderAlphabetically = array => {
   new_array = [];
   // Will loop for the array and get only the titles
   array.map((i) => {
@@ -58,7 +58,7 @@ function orderAlphabetically(array) {
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear(array) {
+let orderByYear = array => {
   new_array = array.sort((first, last) => {
     //Going to create a compare function
     if (first.year > last.year) {
@@ -98,7 +98,7 @@ function orderByYear(array) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory(array, genre) {
+let moviesAverageByCategory = (array, genre) => {
   // Obtain the movies from the genre we need
   let movies_genre = array.filter((i) => {
     // As there can be many genre in a film, we will loop for each one (could use the for...of iteration)
@@ -135,7 +135,7 @@ function moviesAverageByCategory(array, genre) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes(array) {
+let hoursToMinutes = array => {
   /* Create a new array which will have the old array
   * And then we will loop for the array and check the possible times that a film can have: hours+minutes, only hours or only minutes
   */
@@ -170,28 +170,23 @@ function hoursToMinutes(array) {
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear(array, year) {
+let bestFilmOfYear = (array, year) => {
   /* We will loop of the array, and check if the element if from the year we are searching
   *  And if it is from the year we are searching, we will compare its score with the best score we have
   */
   best_film = [];
   best_score = 0;
   for (let i = 0; i < array.length; i++) {
-    //console.log(array[i].score)
     film_year = array[i].year;
     film_score = array[i].score;
 
     if (film_year == year) {
-      console.log('True');
-      // If this film score is the highest one
-      if (film_score > best_score) {
-        console.log(array[i]);
-        // The best film will be this one as an array
-        best_film = [array[i]];
-
-        // The best score will now be the film score
-        best_score = film_score;
-      }
+      // If this film score is the highest one (check it with ternary conditional operator)
+      (film_score > best_score) ? (
+        best_film = [array[i]],
+        best_score = film_score
+      ) : "Not the best" ;
+      
     }
   }
   return best_film;
