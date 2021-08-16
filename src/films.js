@@ -150,19 +150,19 @@ let hoursToMinutes = array => {
       if (array[i].duration.includes('min')) {
         // It is like 2h 45min
         let [hours, minutes] = array[i].duration.split(' ');
-        let [number_hours, letter_hours] = hours.split('h'); // So we would obtain 2 and h
-        let [number_minutes, letter_minutes] = minutes.split('m'); // So we obtain 45 and min
+        let [number_hours, h] = hours.split('h'); // So we would obtain 2 and h
+        let [number_minutes, min] = minutes.split('m'); // So we obtain 45 and min
 
         new_array[i].duration =
           Number(number_hours) * 60 + Number(number_minutes);
       } else {
         // It is like 2 h
-        let [number_hours, letter_hours] = array[i].duration.split('h');
+        let [number_hours, h] = array[i].duration.split('h');
         new_array[i].duration = Number(number_hours) * 60;
       }
     } else {
       // It is like 45min
-      let [number_minutes, letter_minutes] = array[i].duration.split('m');
+      let [number_minutes, min] = array[i].duration.split('m');
       new_array[i].duration = Number(number_minutes);
     }
   }
